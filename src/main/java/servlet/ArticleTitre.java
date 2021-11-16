@@ -1,43 +1,42 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
+import model.Article;
 import model.User;
 
 /**
- * Servlet implementation class UserIinfo
+ * Servlet implementation class ArticleTitre
  */
 
-@WebServlet(urlPatterns = "/userinfo")
-public class UserInfo extends HttpServlet {
+@WebServlet(urlPatterns = "/articletitre")
+public class ArticleTitre extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public UserInfo() {}
+
+    public ArticleTitre() {}
+
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		// objet session
 		HttpSession session = request.getSession(); 
-		
 		// recupère l'objet user sur la page UserInfo
-		User visiteur = (User) session.getAttribute("USER");
-
-		// Si pas d'utilisateur, retour à la page d'acceuil
-		if (visiteur == null) {
-			response.sendRedirect(this.getServletContext().getContextPath() + "/acceuil");
-			return;
-		}
+		User contributeur = (User) session.getAttribute("USER");
 		
-		request.setAttribute("visiteur", visiteur);
-		request.getRequestDispatcher("/WEB-INF/UserInfo.jsp").forward(request, response);
+		request.setAttribute("utilisateur", contributeur);
+	
+		
+		request.getRequestDispatcher("/WEB-INF/Article.jsp").forward(request, response);
+		
 	}
 
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 	}
 
 }

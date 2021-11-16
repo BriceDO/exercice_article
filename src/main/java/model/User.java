@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 /**
  * Classe User de l'exercice exoArticle
  * @author brice
@@ -12,6 +14,7 @@ public class User {
 	int nbArticle;
 	private String email;
 	private boolean role;
+	List<Article> articles;
 	
 	
 	public User(String username, int nbArticle, String email, boolean role) {
@@ -34,6 +37,8 @@ public class User {
 
 
 	public int getNbArticle() {
+		// recupérer la taille de la liste d'article
+		// articles.size()
 		return nbArticle;
 	}
 
@@ -53,13 +58,30 @@ public class User {
 	}
 
 
-	public String getRole() {
+	public boolean getRole() {
 		return role;
 	}
 
 
-	public void setRole(String role) {
+	public void setRole(boolean role) {
 		this.role = role;
+	}
+
+
+	public List<Article> getArticles() {
+		return articles;
+	}
+
+
+	public void setArticles(List<Article> articles) {
+		this.articles = articles;
+	}
+
+
+	@Override
+	public String toString() {
+		return "User [username=" + username + ", nbArticle=" + nbArticle + ", email=" + email + ", role=" + role
+				+ ", articles=" + articles + "]";
 	}
 	
 }
