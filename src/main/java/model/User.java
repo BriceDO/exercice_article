@@ -11,10 +11,10 @@ public class User {
 	String username;
 	int nbArticle;
 	private String email;
-	private String role;
+	private boolean role;
 	
 	
-	public User(String username, int nbArticle, String email, String role) {
+	public User(String username, int nbArticle, String email, boolean role) {
 		super();
 		this.username = username;
 		this.nbArticle = nbArticle;
