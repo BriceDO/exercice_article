@@ -17,9 +17,7 @@ import model.User;
 public class ArticleTitre extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
     public ArticleTitre() {}
-
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -29,7 +27,6 @@ public class ArticleTitre extends HttpServlet {
 		User contributeur = (User) session.getAttribute("USER");
 		
 		request.setAttribute("utilisateur", contributeur);
-	
 		
 		request.getRequestDispatcher("/WEB-INF/Article.jsp").forward(request, response);
 		

@@ -8,5 +8,11 @@
 </head>
 <body>
 	
+	<h1>Voici le contenu de l'article dont l'id est ${article.getId()}</h1>
+	
+	<h3>Voici mon titre : ${article.getTitre()}</h3>
+	<p>${article.getContenu()}</p>
+	<p>Ecrit par : ${visiteur.getUsername()}</p>
+	
 </body>
 </html>

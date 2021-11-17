@@ -37,7 +37,7 @@ public class User {
 
 
 	public int getNbArticle() {
-		// recupérer la taille de la liste d'article
+		// todo recupérer la taille de la liste d'article
 		// articles.size()
 		return nbArticle;
 	}

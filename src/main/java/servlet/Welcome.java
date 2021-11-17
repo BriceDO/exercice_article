@@ -34,9 +34,9 @@ public class Welcome extends HttpServlet {
 		
 		User contributeur = new User("Toto", 3, "toto@toto.fr", false);
 		
-		Article article1 = new Article(1, "Mon titre", "Mon contenu", contributeur);
-		Article article2 = new Article(2, "Mon titre2", "Mon contenu2", contributeur);
-		Article article3 = new Article(3, "Mon titre3", "Mon contenu3", contributeur);
+		Article article1 = new Article(1, "Mon titre, c'est le premier !", "Mon contenu, c'est le premier aussi !", contributeur);
+		Article article2 = new Article(2, "Mon méga titre", "Mon méga contenu", contributeur);
+		Article article3 = new Article(3, "Mon troisième titre", "Le contenu du troisième article !", contributeur);
 		ArrayList<Article> articles = new ArrayList<Article>();
 		articles.add(article1);
 		articles.add(article2);
@@ -47,15 +47,6 @@ public class Welcome extends HttpServlet {
 		contributeur.setArticles(articles);
 
 		session.setAttribute("USER", contributeur);
-		
-		/**
-		 * 
-		 * 		session.setAttribute("ARTICLE1", article1);
-				session.setAttribute("ARTICLE2", article2);
-				session.setAttribute("ARTICLE3", article3);
-				session.setAttribute("articles", articles);
-		 */
-
 		
 		this.getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
 		

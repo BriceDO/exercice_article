@@ -14,15 +14,17 @@ import jakarta.servlet.http.HttpServletRequest;
 /**
  * Servlet Filter implementation class Admin
  */
+
+@WebFilter (urlPatterns = {"/*"})
 public class AdminFilter implements Filter {
 
-    public AdminFilter() {
-        
-    }
+    public AdminFilter() {}
 
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
 
-		chain.doFilter(request, response);
+		HttpServletRequest request = (HttpServletRequest) req;
+		
+		chain.doFilter(req, resp);
 	}
 	
 	public void init(FilterConfig fConfig) throws ServletException {

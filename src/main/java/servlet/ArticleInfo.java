@@ -19,23 +19,31 @@ import model.User;
 public class ArticleInfo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
     public ArticleInfo() {}
-
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(); // objet session
-		int id = Integer.parseInt(request.getParameter("id"));
+		
 		User contributeur = (User) session.getAttribute("USER");
+		
+		// Variable articles contenant tous les articles du contributeur
 		List<Article> articles = contributeur.getArticles();
 		
-		contributeur.getArticles();
+		// Variable de l'id dans la barre de recherche
+		int id = Integer.parseInt(request.getParameter("id"));
 		
-		// Parcourir la liste des articles du contributeur et trouver celui dont l'ID est égale à ID de la barre de recherche et le retourner.
+		// Parcourir la liste des articles du contributeur
+		for (int i = 0; i < articles.size(); i++) {
+			// trouver celui dont l'ID est égale à ID de la barre de recherche
+			if(id == articles.get(i).getId()) {
+				// et le retourner
+				request.setAttribute("article", articles.get(i));
+			}
+			
+		}
 		
-		
-		ServletOutputStream out = response.getOutputStream();
-		out.println(id);
+		request.setAttribute("visiteur", contributeur);
+		request.getRequestDispatcher("/WEB-INF/ArticleDetail.jsp").forward(request, response);
 		
 	}
 

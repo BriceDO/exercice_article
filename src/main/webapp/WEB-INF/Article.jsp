@@ -13,9 +13,11 @@
 	<h1>Voici la liste des articles</h1>
 	<ul>
 	
+	<%--boucle sur les articles de l'utilisateur, qui va générer une ligne HTML pour chaque titre --%>
+	
 	<%
 	User user = (User) request.getAttribute("utilisateur");
-	System.out.println(user.toString());
+
 	for (Article article : user.getArticles()) {
 	%>
 		<li><a href="<%= request.getContextPath() %>/article?id=<%=article.getId()%>"><%=article.getTitre()%></a></li>
