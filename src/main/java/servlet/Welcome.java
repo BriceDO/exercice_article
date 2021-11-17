@@ -32,18 +32,24 @@ public class Welcome extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(); // objet session
 		
+		// Instanciation des user
 		User contributeur = new User("Toto", 3, "toto@toto.fr", false);
+		//User admin = new User("Titi", 0, "titi@titi.fr", true);
 		
+		// Instanciation des articles
 		Article article1 = new Article(1, "Mon titre, c'est le premier !", "Mon contenu, c'est le premier aussi !", contributeur);
 		Article article2 = new Article(2, "Mon méga titre", "Mon méga contenu", contributeur);
 		Article article3 = new Article(3, "Mon troisième titre", "Le contenu du troisième article !", contributeur);
+		
+		// Création de la liste et add des articles
 		ArrayList<Article> articles = new ArrayList<Article>();
 		articles.add(article1);
 		articles.add(article2);
 		articles.add(article3);
 		
-		User admin = new User("Titi", 0, "titi@titi.fr", true);
 		
+		
+		// Rajoute les articles pour le user
 		contributeur.setArticles(articles);
 
 		session.setAttribute("USER", contributeur);
